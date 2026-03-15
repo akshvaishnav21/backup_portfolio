@@ -12,7 +12,6 @@ export async function getStarCount(repo: string): Promise<number> {
       `https://api.github.com/repos/${GITHUB_USERNAME}/${repo}`,
       {
         headers,
-        next: { revalidate: 3600 },
       }
     );
     if (!res.ok) return 0;

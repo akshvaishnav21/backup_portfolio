@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { Github, ExternalLink, Star } from "lucide-react";
 import type { Project } from "@/lib/projects";
 
@@ -45,12 +44,11 @@ export default function ProjectCard({ project, stars, index }: Props) {
       {/* Screenshot or gradient placeholder */}
       <div className="relative h-48 overflow-hidden">
         {project.screenshot ? (
-          <Image
-            src={`/screenshots/${project.screenshot}`}
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/screenshots/${project.screenshot}`}
             alt={project.name}
-            fill
-            className="object-cover group-hover:scale-105 transition-transform duration-500"
-            sizes="(max-width: 768px) 100vw, 50vw"
+            className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
           />
         ) : (
           <div
